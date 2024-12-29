@@ -137,5 +137,53 @@
     <h1>No12: 入力項目を作成する</h1>
     <input>
     <h1>No13: プレースホルダー付きのテキスト入力項目を作成する</h1>
+    <input type="text" placeholder="圓本 丈人">
+    <h1>No14: チェックボックスを作成する</h1>
+    <legend>性別選択</legend>
+
+    <div>
+        <input type="checkbox" id="check1" name="Male" checked />
+        <label for="check1">Male</label>
+    </div>
+    <div>
+        <input type="checkbox" id="check2" name="Female" />
+        <label for="check2">Female</label>
+    </div>
+    <h1>※上記とは別の書き方してみる</h1>
+    <label>
+        <input type="checkbox" name="level" value="check1">
+        Male
+    </label>
+    <label>
+        <input type="checkbox" name="level" value="check2">
+        Female
+    </label>
+
+    <h1>No15: ラジオボタンを作成する ※デフォルトで、指定</h1>
+    <h1>同じnameにしたら値を一つしか選択できないようになっている。</h1>
+    <h1>違うnameにしたら選択したものを解除できない</h1>
+    <label>
+        <input type="radio" name="radio1" value="はい"> はい
+    </label>
+    <label>
+        <input type="radio" name="radio1" value="いいえ" checked> いいえ
+    </label>
+    <h1>No16: テキスト入力項目を作成する</h1>
+    <input type ="text">
+    <h1>No17: パスワード入力項目を作成する</h1>
+    <input type = "password">
+    <h1>No18: ボタンを作成する</h1>
+    <input type="button" name="button" value="Click here">
+    <h1>※別の方法で同じボタンを作成する</h1>
+    <button type="button" name="button">Click here</button>
+    <h1>No19: セレクトボックスを作成する</h1>
+    <select size="5" name="好きな食べもの">
+        <option value="sample">スイーツ</option>
+        <option value="sample">肉</option>
+        <option value="sample">サカナ</option>
+        <option value="sample">フルーツ</option>
+        <option value="sample">野菜</option>
+    </select>
+
   </body>
 </html>
