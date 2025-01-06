@@ -1,0 +1,13 @@
+.alert {
+  border: 1px solid red;
+  padding: 10px;
+  background-color: #ffe6e6;
+}
+
+.alert__title {
+  font-weight: bold;
+}
+
+.alert__message {
+  color: red;
+}
