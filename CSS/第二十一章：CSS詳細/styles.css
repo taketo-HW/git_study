@@ -1,0 +1,81 @@
+h1 {
+    color: darkblue; /* 見出しの色を濃い青に設定 */
+    font-size: 32px; /* フォントサイズを32pxに設定 */
+    text-align: center; /* テキストを中央揃えにする */
+}
+p {
+    color: #333; /* 段落の色をダークグレーに設定 */
+    line-height: 1.5; /* 行間を広げる */
+}
+span {
+    color: red; /* span要素のテキストを赤にする */
+    font-weight: bold; /* 太字にする */
+}
+a {
+    color: teal; /* リンクの色を青緑にする */
+    text-decoration: underline; /* 下線を付ける */
+}
+ul {
+    list-style-type: square; /* リストの箇条書きを四角形にする */
+    padding-left: 20px; /* 左側に余白を追加 */
+}
+/* コンテナのスタイル */
+.container {
+  position: relative; /* 子要素を自由に配置するためにrelativeを指定 */
+  width: 300px;
+  height: 300px;
+  margin: 50px auto;
+  background-color: #f4f4f4;
+  border: 2px solid #ccc;
+}
+
+/* ボックスの共通スタイル */
+.box {
+  position: absolute; /* コンテナを基準に配置 */
+  width: 100px;
+  height: 100px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* ボックス1 */
+.box1 {
+  top: 10px;
+  left: 10px;
+  background-color: #ff6666;
+  z-index: 2; /* ボックス1の上に配置 */
+}
+
+/* ボックス2 */
+.box2 {
+  top: 30px;
+  left: 30px;
+  background-color: #66b3ff;
+  z-index: 3; /* 一番上に配置 */
+}
+
+/* ボックス3 */
+.box3 {
+  top: 50px;
+  left: 50px;
+  background-color: #66ff66;
+  z-index: 1; /* 一番下に配置 */
+}
+li {
+  list-style-type: none; /* 箇条書きを削除 */
+}
+.highlight {
+  background-color: yellow; /* 背景色を黄色にする */
+  font-weight: bold; /* 太字にする */
+}
+a:hover {
+  color: orange; /* ホバー時にリンクの色をオレンジにする */
+  text-decoration: none; /* 下線を消す */
+}
+
+a:visited {
+  color: purple; /* 訪問済みリンクの色を紫にする */
+}

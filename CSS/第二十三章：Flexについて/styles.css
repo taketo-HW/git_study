@@ -1,0 +1,12 @@
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* アイテム間の隙間を16pxに設定 */
+}
+
+.flex-item {
+  width: 100px;
+  height: 100px;
+  background-color: #ddd;
+  margin: 16px; /* 各アイテムに個別のマージンを設定 */
+}

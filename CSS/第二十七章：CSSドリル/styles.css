@@ -1,0 +1,14 @@
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* アイテム間の隙間を16pxに設定 */
+}
+
+.flex-item {
+  width: 100px;
+  height: 100px;
+  background-color: #ddd;
+  margin: 16px;
+  font-size: 80%;/* No1: フォントサイズを変更する */
+  font-weight: 900;/* No2: フォントの太さを変更する */
+}
