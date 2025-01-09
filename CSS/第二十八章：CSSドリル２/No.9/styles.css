@@ -1,0 +1,89 @@
+
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 全体 */
+.outer-container {
+  padding: 40px;
+}
+
+/* Main */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px;
+  border: 2px solid black; /* 四角の黒枠 */
+}
+
+/* 上側 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 40px;
+}
+
+.header-item {
+  flex: 1;
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 40px;
+  text-align: center;
+}
+
+/* メインの真ん中 */
+.main {
+  display: flex;
+  gap: 40px;
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 40px;
+}
+
+
+.sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 40px;
+}
+
+.sidebar-small {
+  border: 2px solid black; /* 四角の黒枠 */
+  height: 40px;
+}
+
+.sidebar-large {
+  border: 2px solid black; /* 四角の黒枠 */
+  flex-grow: 1;
+}
+
+.content {
+  flex: 3;
+  display: flex;
+  gap: 40px;
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 40px;
+}
+
+.content-main {
+  border: 2px solid black; /* 四角の黒枠 */
+  flex: 2;
+}
+
+.content-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.content-box {
+  border: 2px solid black; /* 四角の黒枠 */
+  height: 40px;
+}

@@ -1,0 +1,29 @@
+.Side_by_side {
+  display: flex; /* No1: Flexプロパティを使用して、要素を横並びにしてください */
+  /* justify-content: space-between; No2: Flexプロパティ、justify-contentプロパティを使用して両端寄せにしてください */
+  /* justify-content: center; /* No3: Flexプロパティ、justify-contentプロパティを使用して中央寄せにしてください */
+  /* justify-content: flex-start;No4: Flexプロパティ、justify-contentプロパティを使用して左寄せにしてください */
+  justify-content: flex-end; /*No5: Flexプロパティ、justify-contentプロパティを使用して右寄せにしてください */
+  align-items: flex-start; /* 子要素を上寄せに配置 */
+
+  gap: 10px; /* 要素間のスペースを指定 */
+}
+.Side_by_side {
+  align-items: flex-start; /* 子要素を上寄せに配置 */
+  gap: 10px; /* 要素間のスペースを指定 */
+}
+.container {
+  display: flex;
+  flex-direction: column; /* 子要素を縦方向に並べる */
+  /* align-items: flex-start; No6: Flexプロパティ、align-itemsプロパティを使用して上寄せにしてください */
+  /* align-items: flex-end;  No7: Flexプロパティ、align-itemsプロパティを使用して下寄せにしてください */
+  align-items: center;  /*No7: Flexプロパティ、align-itemsプロパティを使用して下寄せにしてください */
+  height: 200px; /* コンテナの高さ */
+  border: 1px solid #000; /* コンテナの枠線を表示（デバッグ用） */
+}
+
+.item {
+  padding: 10px;
+  background-color: #f0f0f0;
+  margin-bottom: 5px; /* 子要素間のスペースを追加 */
+}

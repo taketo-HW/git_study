@@ -1,0 +1,105 @@
+
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 全体 */
+.outer-container {
+  padding: 40px;
+}
+
+/* Main */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px;
+  border: 2px solid black; /* 四角の黒枠 */
+}
+
+/* 上側 */
+.header {
+  flex-grow: 1; /* 要素を伸ばして余白を埋める */
+  display: flex;
+  gap: 40px;
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 40px;
+}
+
+.header-iteml {
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 40px;
+  text-align: left;
+  height: 125px;
+  width: 125px;
+}
+.header-itemr{
+  flex-direction: column;/* 子要素を縦方向に並べる */
+  flex-grow: 1; /* 要素を伸ばして余白を埋める */
+}
+
+.hedder-r_top{
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 40px;
+  text-align: left;
+}
+.hedder-r_bottom{
+  flex:1 ;
+  flex-grow: 1; /* 要素を伸ばして余白を埋める */
+  padding-top: 40px;
+  display: flex;
+  flex-direction: row;/* 子要素を横方向に並べる */
+  gap: 40px;
+}
+.hed-r-bot-item{
+  flex-grow: 1; /* 要素を伸ばして余白を埋める */
+  border: 2px solid black; /* 四角の黒枠 */
+  display: flex;
+  padding: 40px;
+}
+
+
+
+/* メイン */
+.main {
+  justify-content: center;
+  display: flex;
+  gap: 40px;
+}
+
+
+.sidebar {
+  flex:1 ;
+  flex-direction: column;/* 子要素を縦方向に並べる */
+  display: flex;
+  gap: 40px;
+}
+
+.sidebar-top{
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 40px;
+}
+.sidebar-center{
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 40px;
+}
+.sidebar-bottom{
+  justify-content: space-between; /* 子要素を両端に寄せる */
+  display: flex;
+  gap: 40px;
+}
+.sider-bot-item{
+  flex:1 ;
+  border: 2px solid black; /* 四角の黒枠 */
+  display: flex;
+  padding: 40px;
+}
+.main-right {
+  flex: 1;
+  display: flex;
+  gap: 40px;
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 40px;
+}
