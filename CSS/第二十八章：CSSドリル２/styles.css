@@ -1,0 +1,10 @@
+.Side_by_side {
+  display: flex; /* No1: Flexプロパティを使用して、要素を横並びにしてください */
+  /* justify-content: space-between; No2: Flexプロパティ、justify-contentプロパティを使用して両端寄せにしてください */
+  /* justify-content: center; /* No3: Flexプロパティ、justify-contentプロパティを使用して中央寄せにしてください */
+  /* justify-content: flex-start;No4: Flexプロパティ、justify-contentプロパティを使用して左寄せにしてください */
+  justify-content: flex-end; /*No5: Flexプロパティ、justify-contentプロパティを使用して右寄せにしてください */
+  align-items: flex-start; /* 子要素を上寄せに配置 */
+
+  gap: 10px; /* 要素間のスペースを指定 */
+}
