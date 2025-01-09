@@ -2,28 +2,24 @@ h1 {
     color: darkblue; /* 見出しの色を濃い青に設定 */
     font-size: 32px; /* フォントサイズを32pxに設定 */
     text-align: center; /* テキストを中央揃えにする */
-  }
-  
-  p {
+}
+p {
     color: #333; /* 段落の色をダークグレーに設定 */
     line-height: 1.5; /* 行間を広げる */
-  }
-  
-  span {
+}
+span {
     color: red; /* span要素のテキストを赤にする */
     font-weight: bold; /* 太字にする */
-  }
-  
-  a {
+}
+a {
     color: teal; /* リンクの色を青緑にする */
     text-decoration: underline; /* 下線を付ける */
-  }
-  
-  ul {
+}
+ul {
     list-style-type: square; /* リストの箇条書きを四角形にする */
     padding-left: 20px; /* 左側に余白を追加 */
-  }
-  /* コンテナのスタイル */
+}
+/* コンテナのスタイル */
 .container {
   position: relative; /* 子要素を自由に配置するためにrelativeを指定 */
   width: 300px;
