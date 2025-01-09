@@ -11,4 +11,107 @@
   margin: 16px;
   font-size: 80%;/* No1: フォントサイズを変更する */
   font-weight: 900;/* No2: フォントの太さを変更する */
+  font-family: "Arial", sans-serif;/* No3: フォントを変更する */
+  /* text-align: start;No4: 文字を左寄せにする */
+  /* text-align: end;No5: 文字を右寄せにする */
+  text-align: center;/* text-align: center; */
+  text-decoration: underline;/* No7: 下線を引く */
+  letter-spacing: 10px;/* No8: 文字間隔を変更する*/
+  color: rgb(214, 122, 127);/* No9: 文字色を変更する*/
+  /*background-color: rgb(20, 122, 127); No10: 背景色を変更する*/
+
+}
+.bg_test-text {
+  border:  solid 1px;                             /* 枠線指定 */
+  display:  inline-block;                         /* インラインブロックにする */
+  background-color: rgba(255, 255, 255, 0.7);     /* 背景色指定 */
+  background-repeat: no-repeat;/* No12: 背景画像の繰り返しを止める */
+  width: 200px; /* No13: 要素の幅を200pxにする */
+  height: 400px; /* No14: 要素の高さを400pxにする */
+  margin: 16px; /* ### No15: 要素に外側の余白を指定する */
+  padding: 10px 20px; /* No16: 要素に内側の余白を指定する */
+  border: solid 1px; /* No17: ボーダーを追加する */
+  overflow: scroll;
+}
+.bg_test {
+  background-image: url(背景画像.jpg);    /* No11: 背景画像を読み込む */
+}
+.bg_test-text1 {
+  border:  solid 1px;                             /* 枠線指定 */
+  display: none;                         /* No19: 要素を非表示にする */
+  background-color: rgba(255, 255, 255, 0.7);     /* 背景色指定 */
+  background-repeat: no-repeat;/* No12: 背景画像の繰り返しを止める */
+  width: 200px; /* No13: 要素の幅を200pxにする */
+  height: 400px; /* No14: 要素の高さを400pxにする */
+  margin: 16px; /* ### No15: 要素に外側の余白を指定する */
+  padding: 10px 20px; /* No16: 要素に内側の余白を指定する */
+  border: solid 1px; /* No17: ボーダーを追加する */
+  overflow: scroll;
+}
+.bg_test1 {
+  background-image: url(背景画像.jpg);    /* No11: 背景画像を読み込む */
+}
+.image-container {
+  position: relative; /* コンテナを相対位置に設定 */
+  width: 400px; /* コンテナの幅を設定 */
+  height: 300px; /* コンテナの高さを設定 */
+}
+
+.background-image {
+  position: absolute; /* 背景画像を絶対位置に設定 */
+  top: 0;
+  left: 0;
+  width: 100%; /* コンテナに合わせる */
+  height: 100%;
+  object-fit: cover; /* 画像の縦横比を保ちながら調整 */
+  z-index: 1; /* No21: 画像の重なり順を指定する */
+}
+
+.overlay-image {
+  position: absolute; /* 重ねる画像を絶対位置に設定 */
+  top: 50%; /* 縦方向に中央寄せ */
+  left: 50%; /* 横方向に中央寄せ */
+  transform: translate(-50%, -50%); /* 画像の中央揃え */
+  width: 100px; /* 重ねる画像の幅を指定 */
+  height: auto; /* 縦横比を維持 */
+  z-index: 2; /* No21: 画像の重なり順を指定する */
+}
+.square-list {
+  list-style: square; /* No22: リストの点を四角形にする */
+  padding-left: 20px; /* リストの左側に余白を追加（必要に応じて調整） */
+}
+
+th {
+  border: 1px solid black; /* 各セルの枠線 */
+  text-align: center; /* テキストを中央揃え */
+  padding: 8px; /* セル内の余白 */
+}
+
+th {
+  background-color: #f2f2f2; /* ヘッダーの背景色 */
+}
+.border-spacing-table {
+  border: 1px solid black; /* テーブル全体の枠線 */
+  border-spacing: 10px; /* No24: テーブルの境界線の幅を指定する */
+  width: 50%; /* テーブル幅 */
+}
+
+td {
+  border: 1px solid black; /* 各セルの枠線 */
+  padding: 10px; /* セル内の余白 */
+  text-align: center; /* 中央揃え */
+}
+.hover-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer; /* No25: マウスホバー時のポインターを変更する */
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.hover-button:hover {
+  background-color: #0056b3; /* ホバー時の背景色変更 */
 }
