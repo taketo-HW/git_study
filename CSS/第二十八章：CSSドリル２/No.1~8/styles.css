@@ -1,5 +1,5 @@
-.Side_by_side {
-  display: flex; /* No1: Flexプロパティを使用して、要素を横並びにしてください */
+.side_by_side {
+  display:grid; /* No1: Flexプロパティを使用して、要素を横並びにしてください */
   /* justify-content: space-between; No2: Flexプロパティ、justify-contentプロパティを使用して両端寄せにしてください */
   /* justify-content: center; /* No3: Flexプロパティ、justify-contentプロパティを使用して中央寄せにしてください */
   /* justify-content: flex-start;No4: Flexプロパティ、justify-contentプロパティを使用して左寄せにしてください */
@@ -8,12 +8,9 @@
 
   gap: 10px; /* 要素間のスペースを指定 */
 }
-.Side_by_side {
-  align-items: flex-start; /* 子要素を上寄せに配置 */
-  gap: 10px; /* 要素間のスペースを指定 */
-}
+
 .container {
-  display: flex;
+  display:grid;
   flex-direction: column; /* 子要素を縦方向に並べる */
   /* align-items: flex-start; No6: Flexプロパティ、align-itemsプロパティを使用して上寄せにしてください */
   /* align-items: flex-end;  No7: Flexプロパティ、align-itemsプロパティを使用して下寄せにしてください */

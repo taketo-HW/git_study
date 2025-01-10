@@ -12,7 +12,7 @@ body, html {
 
 /* Main */
 .container {
-  display: flex;
+  display:grid;
   flex-direction: column;
   gap: 40px;
   padding: 40px;
@@ -21,7 +21,7 @@ body, html {
 
 /* 上側 */
 .header {
-  display: flex;
+  display:grid;
   justify-content: space-between;
   gap: 40px;
   border: 2px solid black; /* 四角の黒枠 */
@@ -37,16 +37,14 @@ body, html {
 
 /* メインの真ん中 */
 .main {
-  display: flex;
+  display:grid;
   gap: 40px;
-  border: 2px solid black; /* 四角の黒枠 */
-  padding: 40px;
 }
 
 
 .sidebar {
   flex: 1;
-  display: flex;
+  display:grid;
   flex-direction: column;
   gap: 40px;
   border: 2px solid black; /* 四角の黒枠 */
@@ -65,7 +63,7 @@ body, html {
 
 .content {
   flex: 3;
-  display: flex;
+  display:grid;
   gap: 40px;
   border: 2px solid black; /* 四角の黒枠 */
   padding: 40px;
@@ -78,7 +76,7 @@ body, html {
 
 .content-right {
   flex: 1;
-  display: flex;
+  display:grid;
   flex-direction: column;
   gap: 40px;
 }
