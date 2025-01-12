@@ -1,0 +1,82 @@
+.body{
+  background-color: #f9f9f9;  /* 背景色 */
+  font-family: Arial, sans-serif; /* フォントファミリ */
+  color: #333;               /* 文字色 */
+}
+/*========================================
+  ヘッダー
+========================================*/
+.header {
+  text-align: center;        /* 中央揃え */
+  background: url('アイアンマン.png');
+  background-repeat: no-repeat;
+  color: #333;               /* 文字色（任意に上書き可能） */
+  padding: 50px 20px;        /* 上下50px、左右20px */
+}
+.header h1 {
+  font-size: 36px;           /* フォントサイズ */
+  margin-bottom: 10px;       /* 下マージン */
+}
+.header p {
+  font-size: 18px;           /* フォントサイズ */
+}
+/*========================================
+  情報カード
+========================================*/
+.cards {
+  display: flex;                 /* Flexboxで横並び */
+  justify-content: space-between;/* 各カード間に均等な余白を配置 */
+  align-items: flex-start;       /* 上揃え */
+  margin: 30px auto;            /* 上下に30pxの余白、左右はautoで中央寄せ */
+  padding: 20px;                /* 内側の余白 */
+  max-width: 1000px;            /* 最大幅を1000pxに制限 */
+}
+.card {
+  background-color: white;        /* 背景色：白 */
+  border-radius: 10px;           /* 角の丸み */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ボックスシャドウ */
+  width: 30%;                    /* 親要素に対して30% */
+  padding: 20px;                 /* 内側の余白 */
+  text-align: center;            /* テキスト中央揃え */
+}
+.card h2 {
+  font-size: 20px;               /* フォントサイズ */
+  margin-bottom: 10px;           /* 下マージン */
+}
+.card p {
+  font-size: 14px;               /* フォントサイズ */
+  color: #666;                   /* 文字色 */
+}
+/*========================================
+  データ表
+========================================*/
+.table-section {
+  text-align: center;     /* テキストを中央揃え */
+  margin: 30px auto;      /* 上下30px、左右はautoで中央寄せ */
+  max-width: 80%;         /* 画面幅の80%を上限とする */
+  box-sizing: border-box; /* 幅計算にパディングを含める場合 */
+}
+.table-section h2 {
+  margin-bottom: 20px;    /* 下マージン20px */
+}
+.table-section table {
+  width: 100%;            /* テーブルの横幅を100%に */
+  background-color: #fff; /* 背景色：白 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ボックスシャドウ */
+  border-collapse: collapse;  /* セルの境界線を重ねる(推奨) */
+  margin: 0 auto;         /* テーブル自体も中央に寄せる場合 */
+}
+.table-section th,
+.table-section td {
+  padding: 12px 20px;     /* 上下12px、左右20px */
+  text-align: center;     /* 中央揃え */
+  border: 1px solid #ddd; /* 線を薄いグレーで */
+  box-sizing: border-box;
+}
+.table-section thead {
+  background-color: #0078D4; /* 青色 */
+  color: #fff;               /* テキスト色：白 */
+}
+.table-section tbody tr:hover {
+  background-color: #f2f2f2; /* 淡い灰色 */
+}
