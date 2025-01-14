@@ -1,0 +1,106 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 全体 */
+.outer-container {
+  padding: 30px;
+}
+
+/* Main */
+.container {
+  display: grid;
+  grid-template-rows: auto auto; /* 上部とメインを2行に分ける */
+  gap: 30px;
+  padding: 30px;
+  border: 2px solid black; /* 四角の黒枠 */
+}
+
+/* 上側 */
+.header {
+  display: flex;
+  grid-template-columns: 125px 1fr; /* 左側アイテムと右側で2カラム */
+  gap: 30px;
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 30px;
+  height: 200px;
+}
+
+.header-iteml {
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 30px;
+  text-align: left;
+  width: 125px;
+}
+
+.header-itemr {
+  display: grid;
+  grid-template-rows: auto 1fr; /* 上下で分割 */
+  gap: 30px;
+  width: 100%;
+}
+
+.hedder-r_top {
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 30px;
+  text-align: left;
+}
+
+.hedder-r_bottom {
+  display: grid;
+  grid-template-columns: 7fr 3fr;/* 7:3で表示;*/
+  gap: 30px;
+}
+
+.hed-r-bot-item {
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 30px;
+  display: grid; /* フレックス要素不要 */
+}
+/* メイン */
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* サイドバーと右メイン部分 */
+  gap: 30px;
+  justify-content: center; /* 中央揃え */
+}
+
+/* サイドバー */
+.sidebar {
+  display: grid;
+  grid-template-rows: auto auto auto; /* 上中下 */
+  gap: 30px;
+}
+
+.sidebar-top {
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 30px;
+}
+
+.sidebar-center {
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 30px;
+}
+
+.sidebar-bottom {
+  display: flex;
+  grid-template-columns: repeat(2, 1fr); /* 横に2つ */
+  gap: 30px;
+  justify-content: space-between; /* 両端に揃える */
+}
+
+.sider-bot-item {
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 30px;
+}
+
+/* メイン右 */
+.main-right {
+  display: grid;
+  grid-template-columns: 1fr; /* 1列のみ */
+  gap: 30px;
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 30px;
+}
