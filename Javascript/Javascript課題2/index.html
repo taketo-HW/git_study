@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript課題2</title>
+</head>
+<body>
+  <h1>JavaScript課題2</h1>
+
+  <!-- 点数チェック用のボタン -->
+  <button id="checkScore">点数をチェック</button>
+
+  <script>
+    // 算術演算子を使用して計算してみよう
+
+    // 1
+    const kokugo = 100, sugaku = 80, eigo = 75, rika = 70, shakai = 80;
+    console.log("合計点:", kokugo + sugaku + eigo + rika + shakai);
+
+    // 2
+    console.log("引き算:", 100000 - 80000);
+
+    // 3
+    console.log("掛け算:", 32 * 64);
+
+    // 4
+    console.log("割り算:", 10 / 2);
+
+    // 5
+    var num = 3;
+    num++;
+    console.log("インクリメント:", num);
+
+    // 6
+    var num2 = 0;
+    num2--;
+    console.log("デクリメント:", num2);
+
+    // 条件分岐を練習してみよう
+
+    // 1
+    const aMoney = 8000, bMoney = 12000;
+    if (aMoney > bMoney) {
+      console.log("A君の所持金が多い");
+    } else {
+      console.log("B君の所持金が多い");
+    }
+
+    // 2
+    const cMoney = 3000;
+    if (aMoney > bMoney && aMoney > cMoney) {
+      console.log("A君が一番多い");
+    } else if (bMoney > aMoney && bMoney > cMoney) {
+      console.log("B君が一番多い");
+    } else {
+      console.log("C君が一番多い");
+    }
+
+    // 3
+    document.getElementById("checkScore").addEventListener("click", function () {
+      const score = Math.floor(Math.random() * 100) + 1;
+      console.log("生成されたスコア:", score);
+      if (score === 100) {
+        alert("満点！！");
+      } else if (score >= 80) {
+        alert("合格です");
+      } else if (score <= 30) {
+        alert("赤点です");
+      } else {
+        alert("不合格です");
+      }
+    });
+
+    // 4
+    const input = "tokyo"; // 動的に変更可能
+    switch (input) {
+      case "saitama":
+        console.log("埼玉");
+        break;
+      case "tokyo":
+        console.log("東京");
+        break;
+      case "kanagawa":
+        console.log("神奈川");
+        break;
+      default:
+        console.log("未確認");
+    }
+
+    // Mathクラスを使ってみよう
+
+    // 1
+    console.log("ランダムな値:", Math.floor(Math.random() * 10) + 1);
+
+    // 2
+    console.log("最大値:", Math.max(1, 4, 6));
+
+    // 3
+    console.log("最小値:", Math.min(1, 4, 6));
+
+    // for文を使用してループ処理を練習しましょう
+
+    // 1
+    for (let i = 0; i < 10; i++) {
+      console.log("実行");
+    }
+
+    // 2
+    const fruits = ['apple', 'banana', 'cat'];
+    for (let i = 0; i < fruits.length; i++) {
+      console.log(fruits[i]);
+    }
+
+    // 3
+    const numbers = [1, 2, 3];
+    let sum = 0;
+    for (let i = 0; i < numbers.length; i++) {
+      sum += numbers[i];
+    }
+    console.log("配列の合計:", sum);
+
+    // 4
+    const mixedArray = [1, 'hoge', 2, 'huga', 3, 'piyo'];
+    const numArray = [];
+    const strArray = [];
+    for (let i = 0; i < mixedArray.length; i++) {
+      if (typeof mixedArray[i] === 'number') {
+        numArray.push(mixedArray[i]);
+      } else {
+        strArray.push(mixedArray[i]);
+      }
+    }
+    console.log("数値配列:", numArray);
+    console.log("文字列配列:", strArray);
+
+    // 5
+    let oddSum = 0;
+    for (let i = 1; i <= 100; i++) {
+      if (i % 2 === 0) continue;
+      oddSum += i;
+    }
+    console.log("奇数のみ足し算:", oddSum);
+
+    // 他の繰り返し文を使ってみましょう
+
+    // 1
+    fruits.forEach((fruit) => console.log(fruit));
+
+    // 2
+    let i = 0;
+    while (i < 10) {
+      console.log("実行");
+      i++;
+    }
+
+    // 配列メソッドを練習しましょう
+
+    // 1
+    const array = [2, 4, 6, 8];
+    const doubled = array.map(x => x * 2);
+    console.log("map結果:", doubled);
+
+    // 2
+    const hasOdd = [2, 4, 6, 7].some(x => x % 2 !== 0);
+    console.log("奇数が含まれているか:", hasOdd);
+
+    // 3
+    const submissions = [
+      { id: 2, hasSubmitted: true },
+      { id: 3, hasSubmitted: false },
+      { id: 4, hasSubmitted: true },
+    ];
+    const allSubmitted = submissions.every(x => x.hasSubmitted);
+    console.log("すべてが提出されたか:", allSubmitted);
+
+    // 4
+    const filtered = submissions.filter(x => x.hasSubmitted);
+    console.log("提出済み:", filtered);
+
+    // 5
+    const sorted = [
+      { id: 323, hasSubmitted: true },
+      { id: 111, hasSubmitted: false },
+      { id: 268, hasSubmitted: true },
+    ].sort((a, b) => a.id - b.id);
+    console.log("ソート結果:", sorted);
+  </script>
+</body>
+</html>
