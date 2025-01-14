@@ -32,7 +32,6 @@ body, html {
   border: 2px solid black; /* 四角の黒枠 */
   padding: 30px;
   text-align: left;
-  height: 100px;
   width: 125px;
 }
 
@@ -53,7 +52,6 @@ body, html {
   display: grid;
   grid-template-columns: 7fr 3fr;/* 7:3で表示;*/
   gap: 30px;
-  padding-top: 30px;
 }
 
 .hed-r-bot-item {
