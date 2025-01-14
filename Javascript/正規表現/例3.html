@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>正規表現: 電話番号の検証</title>
+</head>
+<body>
+  <h1>電話番号の形式を検証</h1>
+  <input type="text" id="phone" placeholder="000-0000-0000">
+  <button id="check">検証</button>
+  <p id="phoneResult"></p>
+
+  <script>
+    document.getElementById("check").addEventListener("click", function() {
+      const phone = document.getElementById("phone").value;
+      const regex = /^\d{3}-\d{4}-\d{4}$/;
+      const result = regex.test(phone) ? "正しい形式です！" : "無効な形式です。";
+      document.getElementById("phoneResult").innerText = result;
+    });
+  </script>
+</body>
+</html>
