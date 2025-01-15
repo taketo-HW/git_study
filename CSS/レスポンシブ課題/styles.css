@@ -9,7 +9,7 @@
   box-sizing: border-box;
 }
 
-/* 親ラッパ要素 */
+/* 親要素 */
 .wrapper {
   margin: 0 auto;
   max-width: 1280px;
