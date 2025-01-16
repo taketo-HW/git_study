@@ -11,7 +11,7 @@
   border-radius: 10px;/* 角の丸み: 10px */
   box-shadow: inset;/* ボックスシャドウ: */
   text-align: center;/* テキスト揃え: 中央 */
-  padding: 40px;/* パディング: 40px */
+  margin-bottom: 40px;
   width: 300px;
 }
 img.profile-image{
@@ -21,10 +21,12 @@ img.profile-image{
 }
 .name{
   gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   font-size: 24px;
 }
 .occupation{
-  font-size: 24px;
+  font-size: 16px;
   color:#666;/* 背景色 */
 }
 .info-table {
