@@ -7,8 +7,7 @@ const a= [1,2,5,9,4,0,5]
 a.sort()
 console.log(a);
 
-//調べたところ、変数.sort((a, b) => a - b)は、数字ソート、変数.sort()は文字ソート。
-//よって、下記だと違いが分かりやすい。
+//sort関数の引数にはコールバック関数が入り、コールバック関数の戻り値がsortに反映される
 const sample = [10, 2, 1];
 sample.sort();
 console.log(sample); // [1, 10, 2] (文字列として "10" < "2" と見なす)
@@ -42,11 +41,13 @@ console.log(f); // 結果: りんご-バナナ-オレンジ
 `[”jin”, “mike”, “kei”, “ai”, “tom”, “may”]`
 */
 //■演習1
-/*
-let box3 = [1,2,3,4,5,6,7,8,9,];
-console.log(... %2
-)
-*/
+console.log("■■■演習1■■■");
+let box3 = [1,2,3,4,5,6,7,8,9];
+for(item of box3){
+  if(item%2!=0){
+    console.log(item);
+  }
+}
 //■演習2
 const box = ["jin", "mike", "kei", "ai", "tom", "may"];
 console.log(box.sort());
@@ -89,7 +90,31 @@ for (let fruit in h ){
   console.log(fruit);
 }
 // 結果: 1 2 3
-
+/*
+練習問題
+数字が正、負、またはゼロかを判定し、consoleで結果を表示するコードを書いてみましょう。
+*/
+function judge(number){
+  if (number == 0){
+    console.log("ゼロです");
+  }else if(number < 0){
+    console.log("負の値です");
+  }else if(number > 0){
+    console.log("正の値です");
+  }else{
+    console.log("判別できません");
+  }
+}
+console.log("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓演習↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
+judge(1);
+judge(-15546);
+judge(0);
+judge(null);
+judge(2.5);
+judge("128");
+judge(true);
+judge(false);
+console.log("↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑演習↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑");
 /*
 練習問題
 1. 配列`[10, 20, 30, 40, 50]`のすべての要素を2倍にして、consoleに出力してください。
