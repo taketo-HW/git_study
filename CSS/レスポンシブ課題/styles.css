@@ -8,20 +8,26 @@
   padding: 0;
   box-sizing: border-box;
 }
+body{
+  padding: 10px;
+}
+.main{
+  gap: 20px;
+  border: 2px solid black; /* 四角の黒枠 */
+}
 
 /* 親要素 */
 .wrapper {
   margin: 0 auto;
   max-width: 1280px;
   padding: 20px;
-  /* 背景色などは必要に応じて */
-  /* background-color: #fafafa; */
 }
 
 /* ボックス類の基本スタイル */
 .header, .contentA, .contentB,
 .content1, .content2, .content3, .content4,
 .footer {
+  display: flex;
   border: 2px solid black; /* 四角の黒枠 */
   text-align: center;     /* テキスト中央寄せ */
   padding: 20px;          /* 内側余白 */

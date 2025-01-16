@@ -38,6 +38,7 @@
   width: 30%;                    /* 親要素に対して30% */
   padding: 20px;                 /* 内側の余白 */
   text-align: center;            /* テキスト中央揃え */
+  margin: 30px;
 }
 .card h2 {
   font-size: 20px;               /* フォントサイズ */
