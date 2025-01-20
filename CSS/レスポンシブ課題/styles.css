@@ -9,7 +9,11 @@
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 /* 親要素 */
+=======
+/* 親ラッパ要素 */
+>>>>>>> b4c1c8dafc5721eafc8fe42b6c24f37229e42b4a
 .wrapper {
   margin: 0 auto;
   max-width: 1280px;
