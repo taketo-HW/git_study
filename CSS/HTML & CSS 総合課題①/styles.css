@@ -11,23 +11,15 @@
   border-radius: 10px;/* 角の丸み: 10px */
   box-shadow: inset;/* ボックスシャドウ: */
   text-align: center;/* テキスト揃え: 中央 */
-<<<<<<< HEAD
   margin-bottom: 40px;
   width: 300px;
 }
 img.profile-image{
-=======
-  padding: 20px;/* パディング: 20px */
-  width: 300px;
-}
-img.png{
->>>>>>> b4c1c8dafc5721eafc8fe42b6c24f37229e42b4a
   width: 100px;
   height: 100px;
   border-radius: 50%;/* 角の丸み */
 }
 .name{
-<<<<<<< HEAD
   gap: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -36,13 +28,6 @@ img.png{
 .occupation{
   font-size: 16px;
   color:#666;/* 背景色 */
-=======
-  font-size: 16px;
-}
-.occupation{
-  font-size: 16px;
-  background-color:#666;/* 背景色 */
->>>>>>> b4c1c8dafc5721eafc8fe42b6c24f37229e42b4a
 }
 .info-table {
   width: 80%;        /* 画面幅の80% */
@@ -55,11 +40,7 @@ img.png{
   margin-bottom: 20px; /* 下部マージン20px */
 }
 .table-main{
-<<<<<<< HEAD
   width: 100%;
-=======
-  width: 80%;
->>>>>>> b4c1c8dafc5721eafc8fe42b6c24f37229e42b4a
   border-collapse: collapse;
   background-color:#fff;/* 背景色 */
   box-shadow: inset;
@@ -70,19 +51,11 @@ img.png{
   background-color:#0078D4;/* 背景色 */
   color: white;
 }
-<<<<<<< HEAD
 th,td{
-=======
-.th,td{
->>>>>>> b4c1c8dafc5721eafc8fe42b6c24f37229e42b4a
   padding: 12px 20px;          /* 上下12px、左右20px */
   text-align: left;            /* 左寄せ */
   border-bottom: 1px solid #ddd; /* 下線を薄い灰色で表示 */
 }
-<<<<<<< HEAD
 tbody tr:hover {
-=======
-.tbody tr:hover {
->>>>>>> b4c1c8dafc5721eafc8fe42b6c24f37229e42b4a
   background-color: #f2f2f2;   /* 行を淡い灰色に */
 }

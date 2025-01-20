@@ -1,0 +1,96 @@
+/* styles.css */
+
+/* 全体のスタイル設定 */
+body {
+  font-family: Arial, sans-serif; /* ベースフォント */
+  margin: 0;
+  padding: 0;
+  display: flex; /* 中央揃えのためにFlexboxを使用 */
+  justify-content: center; /* 水平方向中央揃え */
+  align-items: center; /* 垂直方向中央揃え */
+  height: 100vh; /* ビューポートの高さ全体を占有 */
+  position: relative; /* 結果出力欄の位置調整に使用 */
+}
+
+/* メインのゲームエリアのスタイル */
+.main {
+  width: 80%; /* 幅を画面の80%に設定 */
+  height: 80%; /* 高さを画面の80%に設定 */
+  text-align: center; /* 中央揃え */
+  padding: 20px; /* 内側の余白 */
+  display: flex; /* 縦方向のレイアウトを形成 */
+  flex-direction: column; /* 上から下に要素を配置 */
+  justify-content: space-between; /* 子要素の間隔を均等に配置 */
+}
+
+/* プレイヤー名のスタイル */
+.player1,
+.player2 {
+  font-size: 2rem; /* フォントサイズを大きく設定 */
+  font-weight: bold; /* 太字 */
+  margin: 20px 0; /* 上下の余白を広げる */
+  padding: 10px; /* 内側の余白を追加 */
+  border: 2px solid #000; /* 黒い境界線 */
+}
+
+/* サイコロのコンテナスタイル */
+.dice1,
+.dice2 {
+  width: 100px; /* サイコロの大きさ */
+  height: 100px;
+  margin: 20px auto; /* 上下の余白を広げ、中央揃え */
+  border: 3px solid #000; /* 黒い境界線 */
+  border-radius: 10px; /* サイコロはそのまま丸い角 */
+  display: grid; /* グリッドレイアウトを使用 */
+  grid-template-columns: repeat(3, 1fr); /* 3列のグリッドを定義 */
+  grid-template-rows: repeat(3, 1fr); /* 3行のグリッドを定義 */
+}
+
+/* サイコロの目（ドット）のスタイル */
+.dice1 div,
+.dice2 div {
+  width: 100%; /* ドットが占める領域 */
+  height: 100%;
+  display: flex; /* 中央揃え */
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  width: 20px; /* ドットの大きさ */
+  height: 20px;
+  background-color: #000; /* ドットの色を黒に設定 */
+  border-radius: 50%; /* ドットを円形にする */
+}
+
+/* ボタンエリアのスタイル */
+.bottom {
+  display: flex; /* 横並びのレイアウト */
+  justify-content: space-around; /* ボタン間のスペースを均等に配置 */
+  margin: 30px 0; /* 上下の余白を広げる */
+}
+
+/* ボタンのスタイル */
+.battle,
+.record_round {
+  font-size: 1.5rem; /* フォントサイズを大きく設定 */
+  font-weight: bold; /* 太字 */
+  padding: 15px 30px; /* ボタンの内側余白 */
+  border: 2px solid #000; /* 黒い境界線 */
+  cursor: pointer; /* ホバー時のカーソルをポインターに設定 */
+  transition: background-color 0.3s ease; /* 背景色の変化にアニメーションを追加 */
+}
+
+/* 結果エリアのスタイル */
+.record_detail {
+  right: 10px; /* 画面右端に配置 */
+  top: 20px; /* 上端からの距離 */
+  width: 20%; /* 幅を画面の20%に設定 */
+  height: 90%; /* 高さを画面の90%に設定 */
+  font-size: 1.5rem; /* フォントサイズを大きく設定 */
+  color: #333; /* 文字色を濃いグレーに設定 */
+  text-align: left; /* 左揃え */
+  white-space: pre-wrap; /* 改行をそのまま表示 */
+  padding: 20px; /* 内側の余白を広げる */
+  overflow-y: auto; /* 縦スクロールを有効化 */
+}
