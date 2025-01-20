@@ -1,0 +1,61 @@
+.main{
+  flex-direction: column;/* 縦方向に配置 */
+  align-items: center;/* 水平中央揃え */
+  justify-content: center;/* 垂直中央揃え */
+  display: flex;/* ディスプレイ: Flexboxを使用 */
+  font-family: Arial, sans-serif;/* フォントファミリー: Arial, sans-serif */
+  background-color:#f7f7f7;/* 背景色: #f7f7f7 */
+}
+.profile-card{
+  background-color:#fff;/* 背景色: #fff */
+  border-radius: 10px;/* 角の丸み: 10px */
+  box-shadow: inset;/* ボックスシャドウ: */
+  text-align: center;/* テキスト揃え: 中央 */
+  margin-bottom: 40px;
+  width: 300px;
+}
+img.profile-image{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;/* 角の丸み */
+}
+.name{
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+.occupation{
+  font-size: 16px;
+  color:#666;/* 背景色 */
+}
+.info-table {
+  width: 80%;        /* 画面幅の80% */
+  max-width: 800px;  /* 最大幅800px */
+  margin: 0 auto;    /* 横方向の中央寄せ */
+  text-align: center;/* テキストを中央揃え */
+}
+.h2-title{
+  font-size: 24px;
+  margin-bottom: 20px; /* 下部マージン20px */
+}
+.table-main{
+  width: 100%;
+  border-collapse: collapse;
+  background-color:#fff;/* 背景色 */
+  box-shadow: inset;
+  border-radius: 10px;/* 角の丸み */
+  overflow: hidden;
+}
+.table-head{
+  background-color:#0078D4;/* 背景色 */
+  color: white;
+}
+th,td{
+  padding: 12px 20px;          /* 上下12px、左右20px */
+  text-align: left;            /* 左寄せ */
+  border-bottom: 1px solid #ddd; /* 下線を薄い灰色で表示 */
+}
+tbody tr:hover {
+  background-color: #f2f2f2;   /* 行を淡い灰色に */
+}

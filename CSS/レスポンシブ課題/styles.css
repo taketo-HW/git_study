@@ -1,0 +1,97 @@
+/* =========================================
+  ベーススタイル
+========================================= */
+
+/* 初期化 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  padding: 10px;
+}
+.main {
+  gap: 20px;
+  border: 2px solid black; /* 四角の黒枠 */
+  padding: 10px;          /* 内側余白追加 */
+}
+
+/* 親要素 */
+.wrapper {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 20px;
+}
+
+/* ボックス類の基本スタイル */
+.header, .contentA, .contentB,
+.content1, .content2, .content3, .content4,
+.footer {
+  display: flex;
+  border: 2px solid black; /* 四角の黒枠 */
+  text-align: center;     /* テキスト中央寄せ */
+  padding: 20px;          /* 内側余白 */
+  margin: 10px;           /* 外側余白(各ボックス間の余白) */
+}
+
+.top-contents, .middle-contents {
+  display: flex;    /* Flexboxで横並び */
+  flex-wrap: wrap;  /* 幅が足りない時に折り返す */
+  justify-content: space-between;
+}
+
+/* =========================================
+  PCレイアウト (幅1280px以上)
+========================================= */
+@media screen and (min-width: 1280px) {
+  .header, .footer {
+    flex: 1 1 100%;
+  }
+  .contentA, .contentB {
+    flex: 1 1 calc(50% - 20px);
+  }
+  .content1, .content2, .content3, .content4 {
+    flex: 1 1 calc(25% - 20px);
+  }
+}
+
+/* =========================================
+  タブレットレイアウト (幅376px～1279px)
+========================================= */
+@media screen and (min-width: 376px) and (max-width: 1279px) {
+  .header, .footer {
+    flex: 1 1 100%;
+  }
+  .contentA, .contentB {
+    flex: 1 1 calc(50% - 20px);
+  }
+  .content1, .content2, .content3, .content4 {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+
+/* =========================================
+  スマホレイアウト (幅375px以下)
+========================================= */
+@media screen and (max-width: 375px) {
+  .wrapper {
+    padding: 15px; /* スマホ時の外枠余白 */
+  }
+
+  .header, .footer {
+    flex: 1 1 100%;
+    margin: 10px 0;
+  }
+
+  .contentA, .contentB,
+  .content1, .content2, .content3, .content4 {
+    flex: 1 1 100%;
+    margin: 10px 0;
+    padding: 15px; /* 内側余白を少し広く設定 */
+  }
+
+  .main {
+    padding: 15px; /* スマホ時の内側余白調整 */
+  }
+}

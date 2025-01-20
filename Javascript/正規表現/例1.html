@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>正規表現: メールアドレスの検証</title>
+</head>
+<body>
+  <h1>メールアドレスの検証</h1>
+  <input type="text" id="email" placeholder="メールアドレスを入力してください">
+  <button id="validate">検証</button>
+  <p id="result"></p>
+
+  <script>
+    document.getElementById("validate").addEventListener("click", function() {
+      const email = document.getElementById("email").value;
+      // より詳細な正規表現（メールアドレスの一般的な形式に対応）
+      const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const result = regex.test(email) ? "正しい形式です！" : "無効な形式です。";
+      document.getElementById("result").innerText = result;
+    });
+  </script>
+</body>
+</html>

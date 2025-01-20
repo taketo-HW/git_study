@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>課題 - DOM操作とイベントハンドリング</title>
+  <style>
+    #container {
+      border: 1px solid #333;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- DOM要素 -->
+  <div id="container">
+    <h1>DOM操作の練習</h1>
+    <button id="addParagraph">段落を追加</button>
+  </div>
+
+  <script>
+    // ■ 変数の練習
+    const str = "hoge";
+    const int = 69;
+    const boo = false;
+    let a;
+    const nat = null;
+    const member = ["田中", "佐藤", "久保田", "鈴木", "河本"];
+    const obj = { id: 1, name: 'yourName', old: 20 };
+
+    const list = [str, int, boo, a, nat, member, obj];
+    for (const item of list) {
+      console.log(item);
+    }
+
+    // ■ 関数の練習
+    function noname() {}
+    const arrow = () => {};
+    function view(item) {
+      console.log(item);
+    }
+    view("三問目");
+    function sum(a, b) {
+      return a + b;
+    }
+    console.log(sum(1, 5));
+    function string(a, b) {
+      return `${a}${b}`;
+    }
+    console.log(string("Hello ", "World!"));
+
+    // ■ DOM操作の練習
+
+    // 1. IDを使ってDOMを取得
+    const container = document.getElementById('container');
+    console.log('取得した要素 (ID):', container);
+
+    // 2. セレクターを使ってDOMを取得
+    const button = document.querySelector('#addParagraph'); // 修正済み
+    console.log('取得した要素 (セレクター):', button);
+
+    // 3. 新しい要素を作成
+    function createNewParagraph() {
+      const newParagraph = document.createElement('p');
+      newParagraph.textContent = '新しい段落が追加されました。';
+      return newParagraph;
+    }
+
+    // 4. 作成した要素を追加
+    function addParagraphToContainer() {
+      const paragraph = createNewParagraph();
+      container.appendChild(paragraph);
+      console.log('新しい段落が追加されました');
+    }
+
+    // ■ イベントハンドリングの練習
+
+    // 1. ボタンにクリックイベントを付与
+    button.addEventListener('click', () => {
+      console.log('click');
+      addParagraphToContainer();
+    });
+
+    // 2. スクロールイベントを設定
+    document.body.addEventListener('scroll', () => {
+      console.log('scroll');
+    });
+
+    // 3. ボタンクリックで子要素を追加
+    function addChildToContainer() {
+      const newChild = createNewParagraph();
+      container.appendChild(newChild);
+      console.log('子要素を追加しました:', newChild);
+    }
+  </script>
+</body>
+</html>

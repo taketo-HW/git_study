@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript課題3</title>
+</head>
+<body>
+  <h1>JavaScript課題3</h1>
+
+  <h2>JSONとJavaScriptオブジェクトの相互変換</h2>
+  <button id="jsonParseButton">JSONをJavaScriptオブジェクトに変換</button>
+  <button id="jsonStringifyButton">JavaScriptオブジェクトをJSONに変換</button>
+
+  <h2>フォームバリデーション</h2>
+  <form id="validationForm">
+    <label>
+      名前:
+      <input type="text" id="nameInput" placeholder="名前を入力">
+    </label>
+    <br><br>
+    <label>
+      年齢:
+      <input type="text" id="ageInput" placeholder="年齢を入力">
+    </label>
+    <br><br>
+    <label>
+      メールアドレス:
+      <input type="text" id="emailInput" placeholder="メールアドレスを入力">
+    </label>
+    <br><br>
+    <label>
+      電話番号(ハイフン無し):
+      <input type="text" id="phoneInput" placeholder="電話番号を入力">
+    </label>
+    <br><br>
+    <button type="button" id="validateButton">送信</button>
+  </form>
+  <p id="errorMessage" style="color: red;"></p>
+
+  <script>
+    //JSONとJavaScriptオブジェクトの相互変換
+    const jsonString = '{"Name":"Taro", "Age":42, "gender": "male"}';
+    const jsObject = { Name: "Taro", Age: 13, gender: "male" };
+
+    document.getElementById("jsonParseButton").addEventListener("click", () => {
+      const parsedObject = JSON.parse(jsonString);
+      console.log("JSONをJavaScriptオブジェクトに変換:", parsedObject);
+    });
+
+    document.getElementById("jsonStringifyButton").addEventListener("click", () => {
+      const jsonStringified = JSON.stringify(jsObject);
+      console.log("JavaScriptオブジェクトをJSONに変換:", jsonStringified);
+    });
+
+    //フォームバリデーションを実装しましょう
+    document.getElementById("validateButton").addEventListener("click", () => {
+      const name = document.getElementById("nameInput").value;
+      const age = document.getElementById("ageInput").value;
+      const email = document.getElementById("emailInput").value;
+      const phone = document.getElementById("phoneInput").value;
+      const errorMessage = document.getElementById("errorMessage");
+      errorMessage.textContent = ""; // エラーメッセージをリセット
+
+      //名前（テキストエリア）
+      if (!name || /[^\u3000-\u9FFF\u3040-\u309F\u30A0-\u30FF\uFF01-\uFF60\uFF65-\uFF9F]/.test(name)) {
+        errorMessage.textContent = "正しい名前を入力してください";
+        return;
+      }
+
+      //年齢（テキストエリア）
+      if (!age || isNaN(age)) {
+        errorMessage.textContent = "正しい年齢を入力してください";
+        return;
+      }
+
+      //メールアドレス（テキストエリア）
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !email.includes("@") || /[^\u0000-\u007F]/.test(email) || !emailRegex.test(email)) {
+        errorMessage.textContent = "正しいメールアドレスを入力してください";
+        return;
+      }
+
+      //電話番号（テキストエリア）
+      if (!phone || phone.length !== 11 || isNaN(phone)) {
+        errorMessage.textContent = "正しい電話番号を入力してください";
+        return;
+      }
+
+      //成功メッセージ
+      alert("バリデーションが成功しました！");
+    });
+  </script>
+</body>
+</html>

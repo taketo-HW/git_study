@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>正規表現: 数字抽出</title>
+</head>
+<body>
+  <h1>文字列から数字を抽出</h1>
+  <textarea id="text" placeholder="ここに文字列を入力してください"></textarea>
+  <button id="extract">抽出</button>
+  <p id="numbers"></p>
+
+  <script>
+    document.getElementById("extract").addEventListener("click", function() {
+      const text = document.getElementById("text").value;
+      const regex = /\d+/g;
+      const matches = text.match(regex);
+      document.getElementById("numbers").innerText = matches ? matches.join(", ") : "数字は見つかりませんでした。";
+    });
+  </script>
+</body>
+</html>
