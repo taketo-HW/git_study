@@ -106,7 +106,7 @@ console.log("↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑演習(条件分岐
 数字が正、負、またはゼロかを判定し、consoleで結果を表示するコードを書いてみましょう。
 */
 function judge(number){
-  if (number == 0){
+  if (number === 0){
     console.log("ゼロです");
   }else if(number < 0){
     console.log("負の値です");
@@ -146,7 +146,7 @@ script.js:96 80
 script.js:96 100
 */
 for(let i = 1; i <= 100; i++){
-  if(i%2==0){// 偶数の場合
+  if(i%2===0){// 偶数の場合
     console.log(i);
   }
 }
