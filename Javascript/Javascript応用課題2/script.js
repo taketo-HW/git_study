@@ -1,14 +1,14 @@
 const colors = ["red", "blue", "yellow", "pink"];
 let correctPositions = [];
 let userPositions = [0, 1, 2, 3];
+const arrayLength = 4; // 4
+const RANDOM_RANGE = 0.5;
 
 // 配列をランダムに並べ替える関数
-function randomizeArray(array) {
-  return array.sort(() => Math.random() - 0.5);
-}
-document.getElementById("reset").addEventListener("click", resetGame);
+const randomizeArray = (array) => array.sort(() => Math.random() - RANDOM_RANGE);
+
 // サークルの色を更新
-function updateCircles() {
+const updateCircles = () => {
   userPositions.forEach((pos, index) => {
     const circle = document.getElementById(`circle${index + 1}`);
     circle.style.backgroundColor = colors[pos];
@@ -16,73 +16,60 @@ function updateCircles() {
 
   // ボタンの状態を更新
   updateButtons();
-}
+};
 
 // ボタンの状態を更新
-function updateButtons() {
+const updateButtons = () => {
   userPositions.forEach((pos, index) => {
     const leftButton = document.getElementById(`left${index + 1}`);
     const rightButton = document.getElementById(`right${index + 1}`);
 
     // 左ボタンの状態
-    if (pos === 0) {
-      leftButton.disabled = true;
-      leftButton.innerText = "⊗";
-    } else {
-      leftButton.disabled = false;
-      leftButton.innerText = "⇦"; // 活性時は元のテキスト
-    }
+    leftButton.disabled = pos === 0;
+    leftButton.innerText = pos === 0 ? "⊗" : "⇦";
 
     // 右ボタンの状態
-    if (pos === colors.length - 1) {
-      rightButton.disabled = true;
-      rightButton.innerText = "⊗";
-    } else {
-      rightButton.disabled = false;
-      rightButton.innerText = "⇨"; // 活性時は元のテキスト
-    }
+    rightButton.disabled = pos === colors.length - 1;
+    rightButton.innerText = pos === colors.length - 1 ? "⊗" : "⇨";
   });
-}
+};
 
 // 正解数をチェック
-function checkCorrect() {
+const checkCorrect = () => {
   let correctCount = 0;
   userPositions.forEach((pos, index) => {
     if (pos === correctPositions[index]) correctCount++;
   });
   document.getElementById("result").innerText = `${correctCount}個正解しています。`;
-}
+};
 
 // リセット
-function resetGame() {
+const resetGame = () => {
   correctPositions = [];
   userPositions = [0, 1, 2, 3];
   document.getElementById("result").innerText = "0個正解しています。";
   updateCircles();
-}
+};
 
 // ゲームスタート
-function startGame() {
-  correctPositions = randomizeArray([...Array(4).keys()]);
-  userPositions = randomizeArray([...Array(4).keys()]);
+const startGame = () => {
+  correctPositions = randomizeArray([...Array(arrayLength).keys()]);
+  userPositions = randomizeArray([...Array(arrayLength).keys()]);
   updateCircles();
   document.getElementById("result").innerText = "0個正解しています。";
 
   // コンソールに答えを表示
-  console.log("スタート後の答え:", correctPositions.map(pos => colors[pos]));
-}
-
-// 初期化
-resetGame();
+  console.log("スタート後の答え:", correctPositions.map((pos) => colors[pos]));
+};
 
 // ページ読み込み時にコンソールに答えを表示
-window.onload = function () {
-  correctPositions = randomizeArray([...Array(4).keys()]);
-  console.log("読み込み時の答え:", correctPositions.map(pos => colors[pos]));
+window.onload = () => {
+  correctPositions = randomizeArray([...Array(arrayLength).keys()]);
+  console.log("読み込み時の答え:", correctPositions.map((pos) => colors[pos]));
 };
 
 // ボタンのクリックイベント設定
-document.querySelectorAll(".move-btn").forEach((btn) => {
+document.querySelectorAll(".move-btn").forEach((btn) =>
   btn.addEventListener("click", (event) => {
     const id = event.target.id;
     const index = parseInt(id.slice(-1)) - 1;
@@ -102,8 +89,10 @@ document.querySelectorAll(".move-btn").forEach((btn) => {
     // 更新処理
     updateCircles();
     checkCorrect();
-  });
-});
+  })
+);
 
 // 初期化
+document.getElementById("reset").addEventListener("click", resetGame);
+document.getElementById("start").addEventListener("click", startGame);
 resetGame();
