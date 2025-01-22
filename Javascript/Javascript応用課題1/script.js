@@ -7,10 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const roundDisplay = document.querySelector(".record_round"); // 現在のラウンドを表示するエリア
 
     // ゲームの初期設定
-    let ROUND = 1; // 現在のラウンド（初期値は1）
+    let round = 1; // 現在のラウンド（初期値は1）
     const MAX_ROUNDS = 3; // 最大ラウンド数
-    let PLAYER_1_SCORE = 0; // プレイヤー1のスコア
-    let PLAYER_2_SCORE = 0; // プレイヤー2のスコア
+    let player1score = 0; // プレイヤー1のスコア
+    let player2score = 0; // プレイヤー2のスコア
     const DICE_NUM = 6; // サイコロの目の数
 
     // サイコロの目の配置パターン（9マス分のインデックス）
@@ -50,18 +50,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 勝敗判定
         if (player1Roll > player2Roll) {
-            PLAYER_1_SCORE++; // プレイヤー1のスコアを増加
-            resultElement.textContent += `ラウンド: ${Math.min(ROUND, MAX_ROUNDS)}/${MAX_ROUNDS}： プレイヤー1の勝ち\n`; // 勝敗を結果エリアに追加
-            resultElement.textContent += `プレイヤー1のポイント： ${PLAYER_1_SCORE}ポイント\nプレイヤー2のポイント： ${PLAYER_2_SCORE}ポイント\n\n`; // 現在のポイントを結果エリアに追加
+            player1score++; // プレイヤー1のスコアを増加
+            resultElement.textContent += `ラウンド: ${Math.min(round, MAX_ROUNDS)}/${MAX_ROUNDS}： プレイヤー1の勝ち\n`; // 勝敗を結果エリアに追加
+            resultElement.textContent += `プレイヤー1のポイント： ${player1score}ポイント\nプレイヤー2のポイント： ${player2score}ポイント\n\n`; // 現在のポイントを結果エリアに追加
         } else if (player1Roll < player2Roll) {
-            PLAYER_2_SCORE++; // プレイヤー2のスコアを増加
-            resultElement.textContent += `ラウンド: ${Math.min(ROUND, MAX_ROUNDS)}/${MAX_ROUNDS}： プレイヤー2の勝ち\n`; // 勝敗を結果エリアに追加
-            resultElement.textContent += `プレイヤー1のポイント： ${PLAYER_1_SCORE}ポイント\nプレイヤー2のポイント： ${PLAYER_2_SCORE}ポイント\n\n`; // 現在のポイントを結果エリアに追加
+            player2score++; // プレイヤー2のスコアを増加
+            resultElement.textContent += `ラウンド: ${Math.min(round, MAX_ROUNDS)}/${MAX_ROUNDS}： プレイヤー2の勝ち\n`; // 勝敗を結果エリアに追加
+            resultElement.textContent += `プレイヤー1のポイント： ${player1score}ポイント\nプレイヤー2のポイント： ${player2score}ポイント\n\n`; // 現在のポイントを結果エリアに追加
         } else {
-            PLAYER_1_SCORE++; // プレイヤー1のスコアを増加
-            PLAYER_2_SCORE++; // プレイヤー2のスコアを増加
-            resultElement.textContent += `ラウンド: ${Math.min(ROUND, MAX_ROUNDS)}/${MAX_ROUNDS}： 引き分け\n`; // 引き分けの場合
-            resultElement.textContent += `プレイヤー1のポイント： ${PLAYER_1_SCORE}ポイント\nプレイヤー2のポイント： ${PLAYER_2_SCORE}ポイント\n\n`; // 現在のポイントを結果エリアに追加
+            player1score++; // プレイヤー1のスコアを増加
+            player2score++; // プレイヤー2のスコアを増加
+            resultElement.textContent += `ラウンド: ${Math.min(round, MAX_ROUNDS)}/${MAX_ROUNDS}： 引き分け\n`; // 引き分けの場合
+            resultElement.textContent += `プレイヤー1のポイント： ${player1score}ポイント\nプレイヤー2のポイント： ${player2score}ポイント\n\n`; // 現在のポイントを結果エリアに追加
         }
     };
 
@@ -69,10 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const endGame = () => {
         roundButton.disabled = true; // 勝負ボタンを非活性化
         // 最終結果を判定して表示
-        if (PLAYER_1_SCORE > PLAYER_2_SCORE) {
+        if (player1score > player2score) {
             resultElement.textContent += "\n最終結果: プレイヤー1の勝利！";
             roundDisplay.textContent = "プレイヤー1の勝利！";
-        } else if (PLAYER_1_SCORE < PLAYER_2_SCORE) {
+        } else if (player1score < player2score) {
             resultElement.textContent += "\n最終結果: プレイヤー2の勝利！";
             roundDisplay.textContent = "プレイヤー2の勝利！";
         } else {
@@ -83,12 +83,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 勝負ボタンがクリックされたときのイベントリスナー
     roundButton.addEventListener("click", () => {
-        if (ROUND <= MAX_ROUNDS) {
+        if (round <= MAX_ROUNDS) {
             const player1Roll = rollDice(); // プレイヤー1がサイコロを振る
             const player2Roll = rollDice(); // プレイヤー2がサイコロを振る
             updateDisplay(player1Roll, player2Roll); // 出目を表示し、勝敗を更新
-            ROUND++; // ラウンドを進める
-            if (ROUND > MAX_ROUNDS) {
+            round++; // ラウンドを進める
+            if (round > MAX_ROUNDS) {
                 endGame(); // 最終ラウンド後にゲーム終了処理を実行
             }
         }
