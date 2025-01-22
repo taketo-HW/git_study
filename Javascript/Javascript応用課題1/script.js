@@ -7,10 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const roundDisplay = document.querySelector(".record_round"); // 現在のラウンドを表示するエリア
 
     // ゲームの初期設定
-    let round = 1; // 現在のラウンド（初期値は1）
-    const maxRounds = 3; // 最大ラウンド数
-    let player1Score = 0; // プレイヤー1のスコア
-    let player2Score = 0; // プレイヤー2のスコア
+    let ROUND = 1; // 現在のラウンド（初期値は1）
+    const MAX_ROUNDS = 3; // 最大ラウンド数
+    let PLAYER_1_SCORE = 0; // プレイヤー1のスコア
+    let PLAYER_2_SCORE = 0; // プレイヤー2のスコア
+    const DICE_NUM = 6; // サイコロの目の数
 
     // サイコロの目の配置パターン（9マス分のインデックス）
     // 0 1 2
@@ -39,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // サイコロを振る関数
-    const rollDice = () => Math.floor(Math.random() * 6) + 1; // 1〜6のランダムな数値を生成
+    const rollDice = () => Math.floor(Math.random() * DICE_NUM) + 1; // 1〜6のランダムな数値を生成
 
     // サイコロの結果とスコアを更新する関数
     const updateDisplay = (player1Roll, player2Roll) => {
@@ -49,13 +50,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 勝敗判定
         if (player1Roll > player2Roll) {
-            player1Score++; // プレイヤー1のスコアを増加
-            resultElement.textContent += `ラウンド${round}: プレイヤー1の勝ち\n`; // 勝敗を結果エリアに追加
+            PLAYER_1_SCORE++; // プレイヤー1のスコアを増加
+            resultElement.textContent += `ラウンド: ${Math.min(ROUND, MAX_ROUNDS)}/${MAX_ROUNDS}： プレイヤー1の勝ち\n`; // 勝敗を結果エリアに追加
+            resultElement.textContent += `プレイヤー1のポイント： ${PLAYER_1_SCORE}ポイント\nプレイヤー2のポイント： ${PLAYER_2_SCORE}ポイント\n\n`; // 現在のポイントを結果エリアに追加
         } else if (player1Roll < player2Roll) {
-            player2Score++; // プレイヤー2のスコアを増加
-            resultElement.textContent += `ラウンド${round}: プレイヤー2の勝ち\n`; // 勝敗を結果エリアに追加
+            PLAYER_2_SCORE++; // プレイヤー2のスコアを増加
+            resultElement.textContent += `ラウンド: ${Math.min(ROUND, MAX_ROUNDS)}/${MAX_ROUNDS}： プレイヤー2の勝ち\n`; // 勝敗を結果エリアに追加
+            resultElement.textContent += `プレイヤー1のポイント： ${PLAYER_1_SCORE}ポイント\nプレイヤー2のポイント： ${PLAYER_2_SCORE}ポイント\n\n`; // 現在のポイントを結果エリアに追加
         } else {
-            resultElement.textContent += `ラウンド${round}: 引き分け\n`; // 引き分けの場合
+            PLAYER_1_SCORE++; // プレイヤー1のスコアを増加
+            PLAYER_2_SCORE++; // プレイヤー2のスコアを増加
+            resultElement.textContent += `ラウンド: ${Math.min(ROUND, MAX_ROUNDS)}/${MAX_ROUNDS}： 引き分け\n`; // 引き分けの場合
+            resultElement.textContent += `プレイヤー1のポイント： ${PLAYER_1_SCORE}ポイント\nプレイヤー2のポイント： ${PLAYER_2_SCORE}ポイント\n\n`; // 現在のポイントを結果エリアに追加
         }
     };
 
@@ -63,33 +69,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const endGame = () => {
         roundButton.disabled = true; // 勝負ボタンを非活性化
         // 最終結果を判定して表示
-        if (player1Score > player2Score) {
+        if (PLAYER_1_SCORE > PLAYER_2_SCORE) {
             resultElement.textContent += "\n最終結果: プレイヤー1の勝利！";
-        } else if (player1Score < player2Score) {
+            roundDisplay.textContent = "プレイヤー1の勝利！";
+        } else if (PLAYER_1_SCORE < PLAYER_2_SCORE) {
             resultElement.textContent += "\n最終結果: プレイヤー2の勝利！";
+            roundDisplay.textContent = "プレイヤー2の勝利！";
         } else {
             resultElement.textContent += "\n最終結果: 引き分け！";
+            roundDisplay.textContent = "引き分け！";
         }
     };
 
     // 勝負ボタンがクリックされたときのイベントリスナー
     roundButton.addEventListener("click", () => {
-        if (round <= maxRounds) {
+        if (ROUND <= MAX_ROUNDS) {
             const player1Roll = rollDice(); // プレイヤー1がサイコロを振る
             const player2Roll = rollDice(); // プレイヤー2がサイコロを振る
             updateDisplay(player1Roll, player2Roll); // 出目を表示し、勝敗を更新
-            round++; // ラウンドを進める
-            if (round > maxRounds) {
+            ROUND++; // ラウンドを進める
+            if (ROUND > MAX_ROUNDS) {
                 endGame(); // 最終ラウンド後にゲーム終了処理を実行
             }
-            // 現在のラウンドを更新
-            roundDisplay.textContent = `ラウンド: ${Math.min(round, maxRounds)}/${maxRounds}`;
         }
     });
 
     // 初期状態の設定
     renderDice(dice1Element, 1); // プレイヤー1のサイコロを目1で初期化
     renderDice(dice2Element, 1); // プレイヤー2のサイコロを目1で初期化
-    roundDisplay.textContent = `ラウンド: ${round}/${maxRounds}`; // 初期ラウンドを表示
     resultElement.textContent = "結果:\n"; // 結果エリアを初期化
 });

@@ -71,7 +71,7 @@ body {
 
 .battle,
 .record_round {
-  width: 80px;
+  width: 200px;
   height: 40px;
   border: 1px solid #000;
   text-align: center;
@@ -87,6 +87,7 @@ body {
 
 /* Round Display */
 .record_round {
+  width: 200px;
   font-size: 18px;
   font-weight: bold;
 }
