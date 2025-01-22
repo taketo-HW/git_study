@@ -6,7 +6,7 @@ let userPositions = [0, 1, 2, 3];
 function randomizeArray(array) {
   return array.sort(() => Math.random() - 0.5);
 }
-
+document.getElementById("reset").addEventListener("click", resetGame);
 // サークルの色を更新
 function updateCircles() {
   userPositions.forEach((pos, index) => {
