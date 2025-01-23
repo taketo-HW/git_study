@@ -1,0 +1,72 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+h1, h2 {
+  margin-bottom: 20px;
+}
+
+.game-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.circles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.circle-wrapper {
+  display: flex;          /* 横並びに配置 */
+  align-items: center;    /* 垂直方向の中央揃え */
+  margin: 0 10px;         /* 各セット間の余白 */
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0 10px;         /* 矢印と円の間の余白 */
+}
+
+.boxes {
+  display: flex;          /* 横並びにする */
+  justify-content: center; /* 中央揃え */
+  gap: 10px;              /* 各BOXの間に余白を追加 */
+  margin-bottom: 20px;
+}
+
+.box {
+  width: 50px;
+  height: 100px;
+  border: 2px solid #ccc;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+}
+
+.move-btn {
+  font-size: 20px;        /* 矢印ボタンのサイズ調整 */
+  cursor: pointer;
+  background-color: transparent; /* 背景を透明にする */
+  border: none;          /* ボーダーを削除 */
+}
+
+button#start, button#reset {
+  font-size: 18px;
+  padding: 10px 30px;
+  margin: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+}

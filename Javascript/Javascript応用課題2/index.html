@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>色当てゲーム</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Javascript応用課題2</h1>
+  <h2>色当てゲーム</h2>
+  <div class="game-container">
+    <div class="circles">
+      <div class="circle-wrapper">
+        <button class="move-btn left" id="left1">⇦</button>
+        <div class="circle" id="circle1"></div>
+        <button class="move-btn right" id="right1">⇨</button>
+      </div>
+      <div class="circle-wrapper">
+        <button class="move-btn left" id="left2">⇦</button>
+        <div class="circle" id="circle2"></div>
+        <button class="move-btn right" id="right2">⇨</button>
+      </div>
+      <div class="circle-wrapper">
+        <button class="move-btn left" id="left3">⇦</button>
+        <div class="circle" id="circle3"></div>
+        <button class="move-btn right" id="right3">⇨</button>
+      </div>
+      <div class="circle-wrapper">
+        <button class="move-btn left" id="left4">⇦</button>
+        <div class="circle" id="circle4"></div>
+        <button class="move-btn right" id="right4">⇨</button>
+      </div>
+    </div>
+    <div class="boxes">
+      <div class="box" id="box1"></div>
+      <div class="box" id="box2"></div>
+      <div class="box" id="box3"></div>
+      <div class="box" id="box4"></div>
+    </div>
+    <p id="result">0個正解しています。</p>
+    <button id="start">スタート</button>
+    <button id="reset">リセット</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
