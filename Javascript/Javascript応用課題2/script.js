@@ -68,27 +68,23 @@ window.onload = () => {
   console.log("読み込み時の答え:", correctPositions.map((pos) => colors[pos]));
 };
 
-// ボタンのクリックイベント設定
+// ボタンのクリック時の動作を汎用化
+const movePosition = (index, direction) => {
+  const newPos = userPositions[index] + direction;
+  if (newPos >= 0 && newPos < colors.length) {
+    userPositions[index] = newPos;
+  }
+};
+
+// ボタンのクリックイベント設定（簡略化）
 document.querySelectorAll(".move-btn").forEach((btn) =>
   btn.addEventListener("click", (event) => {
-    const id = event.target.id;
-    const index = parseInt(id.slice(-1)) - 1;
+    const index = parseInt(event.target.id.slice(-1)) - 1; // 何番目のボタンか取得
+    const isLeft = event.target.id.startsWith("left");    // 左か右か判定
 
-    if (id.startsWith("left")) {
-      // 左ボタンクリック: 左端を超えない
-      if (userPositions[index] > 0) {
-        userPositions[index]--;
-      }
-    } else if (id.startsWith("right")) {
-      // 右ボタンクリック: 右端を超えない
-      if (userPositions[index] < colors.length - 1) {
-        userPositions[index]++;
-      }
-    }
-
-    // 更新処理
-    updateCircles();
-    checkCorrect();
+    movePosition(index, isLeft ? -1 : 1); // 方向に応じて移動
+    updateCircles();                     // 状態更新
+    checkCorrect();                      // 正解チェック
   })
 );
 
