@@ -1,24 +1,28 @@
-// script.js
+// 必要な要素を取得
 const LOG_CONTENT = document.getElementById("log-content");
 const HP_ELEMENT = document.getElementById("hp");
-const LEVEL_ELEMENT = document.getElementById("level");
 const ATTACK_ELEMENT = document.getElementById("attack");
+const LEVEL_ELEMENT = document.getElementById("level");
+const CHARACTER_IMAGE = document.getElementById("character-image");
 const DIRECTION_ELEMENT = document.getElementById("direction");
 const CHOICE_ELEMENT = document.getElementById("choice");
-const CHARACTER_IMAGE = document.getElementById("character-image"); // キャラクター画像
 
-// 初期値
-let hero = {
+const LEVEL_UPEXP = 30; // レベルアップする経験値の量
+const LEVEL_UP_ATK = 20; // レベルアップで加算される攻撃力
+const LEVEL_UP_HP = 20; // レベルアップで加算されるMAXHPの量
+
+const APPEARANCE_RATE = 0.4; // モンスター出現率40％
+const ESCAPING_RATE = 0.5; // 逃げれる確率
+
+// 主人公データ
+const hero = {
   hp: 100,
+  maxHp: 100,
   attack: 10,
   level: 1,
   exp: 0,
-  maxHp: 100, // 最大HPを管理
-  image: "image/yusha.png", // ヒーロー画像
+  image: "image/yusha.png",
 };
-
-let currentMonster = null; // 現在のモンスターを保持
-
 // モンスターのデータ
 const MONSTERS = [
   {
@@ -26,29 +30,51 @@ const MONSTERS = [
     hp: 20,
     attack: 10,
     exp: 10,
-    rate: 0.65, // 出現率65%
-    image: "image/Slime.webp", // スライム画像
+    image: "image/Slime.webp",
+    rate: 0.65, // 出現確率
   },
   {
     name: "ドラゴン",
     hp: 40,
     attack: 20,
     exp: 15,
-    rate: 0.25, // 出現率25%
-    image: "image/dragon.webp", // ドラゴン画像
+    image: "image/dragon.webp",
+    rate: 0.25, // 出現確率
   },
   {
     name: "メタルスライム",
     hp: 20,
     attack: 10,
     exp: 30,
-    rate: 0.1, // 出現率10%
-    image: "image/Metal_slime.webp", // メタルスライム画像
+    image: "image/Metal_slime.webp",
+    rate: 0.1, // 出現確率
   },
 ];
+// ゲーム変数
+let currentMonster = null;
+// ステータス更新
+const updateStatus = () => {
+  HP_ELEMENT.textContent = hero.hp;
+  ATTACK_ELEMENT.textContent = hero.attack;
+  LEVEL_ELEMENT.textContent = hero.level;
+};
 
-// 初期状態の設定
-window.onload = () => resetGame(); // ゲームの初期化
+// キャラクター画像を更新
+const updateCharacterImage = (imagePath) => {
+  CHARACTER_IMAGE.src = imagePath;
+};
+
+// コントロール切り替え
+const toggleControls = (isDirectionActive) => {
+  if (isDirectionActive === true) {
+    DIRECTION_ELEMENT.style.display = "flex"; // 十字キーを表示
+    CHOICE_ELEMENT.style.display = "none"; // ボタンを非表示
+    updateCharacterImage(hero.image); // 非戦闘中はヒーロー画像を表示
+  } else {
+    DIRECTION_ELEMENT.style.display = "none"; // 十字キーを非表示
+    CHOICE_ELEMENT.style.display = "flex"; // ボタンを表示
+  }
+};
 
 // ログを追加
 const addLog = (message) => {
@@ -58,37 +84,28 @@ const addLog = (message) => {
   LOG_CONTENT.scrollTop = LOG_CONTENT.scrollHeight;
 };
 
-// 十字キーの操作
-document.getElementById("up").addEventListener("click", () => moveHero("上"));
-document.getElementById("down").addEventListener("click", () => moveHero("下"));
-document.getElementById("left").addEventListener("click", () => moveHero("左"));
-document.getElementById("right").addEventListener("click", () => moveHero("右"));
-
-// 戦うボタンの処理
-document.getElementById("Start-fighting").addEventListener("click", () => attackMonster());
-
-// 逃げるボタンの処理
-document.getElementById("run-away").addEventListener("click", () => tryToEscape());
-
-// 移動処理
-const moveHero = (direction) => {
-  addLog(`${direction}方向に進みました。`);
-  encounterMonster();
+// ゲームを初期化
+const resetGame = () => {
+  hero.hp = 100; // 初期HP
+  hero.maxHp = 100; // 初期最大HP
+  hero.attack = 10; // 初期攻撃力
+  hero.level = 1; // 初期レベル
+  hero.exp = 0; // 初期経験値
+  currentMonster = null;
+  updateCharacterImage(hero.image);
+  toggleControls(true);
+  updateStatus();
 };
 
-// エンカウント判定 (40%)
-const encounterMonster = () => {
-  const encounterChance = Math.random();
-  if (encounterChance < 0.4) {
-    currentMonster = chooseMonster(); // モンスターを選択
-    addLog(`${currentMonster.name} が現れた！`);
-    updateCharacterImage(currentMonster.image); // モンスター画像を表示
-    toggleControls(false); // モンスターがいるとき
-    startBattle(currentMonster); // 戦闘開始
-  } else {
-    addLog("何も見つかりませんでした。");
-    toggleControls(true); // 非戦闘状態
-    updateCharacterImage(hero.image); // ヒーロー画像を表示
+// レベルアップ判定
+const checkLevelUp = () => {
+  while (hero.exp >= LEVEL_UPEXP) { // 複数回のレベルアップに対応
+    hero.exp -= LEVEL_UPEXP;
+    hero.level ++;
+    hero.maxHp += LEVEL_UP_ATK;
+    hero.attack += LEVEL_UP_HP;
+    hero.hp = hero.maxHp; // HPを全回復
+    addLog(`レベルアップ！ レベル: ${hero.level}、HP: ${hero.hp}、攻撃力: ${hero.attack}`);
   }
 };
 
@@ -105,26 +122,25 @@ const chooseMonster = () => {
   return { ...MONSTERS[MONSTERS.length - 1] }; // デフォルトで最後のモンスターを返す（安全策）
 };
 
-// コントロール切り替え
-const toggleControls = (isDirectionActive) => {
-  if (isDirectionActive) {
-    DIRECTION_ELEMENT.style.display = "flex"; // 十字キーを表示
-    CHOICE_ELEMENT.style.display = "none"; // ボタンを非表示
-    updateCharacterImage(hero.image); // 非戦闘中はヒーロー画像を表示
+// モンスターの攻撃処理
+const monsterAttack = (monster) => {
+  hero.hp -= monster.attack; // ヒーローのHPを減らす
+  if (hero.hp <= 0) {
+    hero.hp = 0; // HPが0以下にならないよう制御
+    updateStatus();
+    addLog(`${monster.name} の攻撃！ ヒーローは倒れました...`);
+    showGameOverPopup(); // ポップアップを表示
   } else {
-    DIRECTION_ELEMENT.style.display = "none"; // 十字キーを非表示
-    CHOICE_ELEMENT.style.display = "flex"; // ボタンを表示
+    addLog(`${monster.name} の攻撃！ ヒーローは${monster.attack}のダメージを受けた！`);
+    updateStatus(); // HPを更新
   }
 };
 
-// 戦闘処理 (モンスターの攻撃)
+// 戦闘処理
 const startBattle = (monster) => {
   addLog(`${monster.name}と戦闘が始まりました！`);
   updateCharacterImage(monster.image); // 戦闘中はモンスター画像を表示
-  // 50%の確率でモンスターが攻撃
-  if (Math.random() < 0.5) {
-    monsterAttack(monster);
-  }
+  currentMonster(false)
 };
 
 // ヒーローの攻撃処理
@@ -147,120 +163,87 @@ const attackMonster = () => {
   }
 };
 
-// レベルアップ判定
-const checkLevelUp = () => {
-  while (hero.exp >= 30) { // 複数回のレベルアップに対応
-    hero.exp -= 30;
-    hero.level += 1;
-    hero.maxHp += 20;
-    hero.attack += 20;
-    hero.hp = hero.maxHp; // HPを全回復
-    addLog(`レベルアップ！ レベル: ${hero.level}、HP: ${hero.hp}、攻撃力: ${hero.attack}`);
+// エンカウント判定 (40%)
+const encounterMonster = () => {
+  const encounterChance = Math.random();
+  console.log(encounterChance);
+  if (encounterChance < APPEARANCE_RATE) {
+    currentMonster = chooseMonster(); // モンスターを選択
+    updateCharacterImage(currentMonster.image); // モンスター画像を表示
+    addLog(`${currentMonster.name} が現れた！`);
+    toggleControls(false); // モンスターがいるとき
+    startBattle(currentMonster); // 戦闘開始
+  } else {
+    addLog("何も見つかりませんでした。");
+    toggleControls(true); // 非戦闘状態
+    updateCharacterImage(hero.image); // ヒーロー画像を表示
   }
+};
+
+// 移動処理
+const moveHero = (direction) => {
+  addLog(`${direction}方向に進みました。`);
+  encounterMonster();
 };
 
 // 逃げる処理
 const tryToEscape = () => {
   const escapeChance = Math.random();
-  if (escapeChance < 0.5) {
+  if (escapeChance < ESCAPING_RATE) {
     addLog("うまく逃げ切れました！");
     toggleControls(true); // 初期画面に戻す
     updateCharacterImage(hero.image); // ヒーロー画像に戻す
     currentMonster = null; // 現在のモンスターをリセット
   } else {
     addLog("逃げられませんでした！");
-    if (currentMonster) {
-      monsterAttack(currentMonster); // 現在のモンスターが攻撃
-    }
+    console.log(currentMonster)
+    monsterAttack(currentMonster); // モンスターが攻撃
   }
 };
 
-// モンスターの攻撃処理
-const monsterAttack = (monster) => {
-  hero.hp -= monster.attack; // ヒーローのHPを減らす
-  if (hero.hp <= 0) {
-    hero.hp = 0; // HPが0以下にならないよう制御
-    updateStatus();
-    addLog(`${monster.name} の攻撃！ ヒーローは倒れました...`);
-    showGameOverPopup(); // ポップアップを表示
-  } else {
-    addLog(`${monster.name} の攻撃！ ヒーローは${monster.attack}のダメージを受けた！`);
-    updateStatus(); // HPを更新
-  }
-};
-
-// ステータス更新
-const updateStatus = () => {
-  HP_ELEMENT.textContent = hero.hp;
-  ATTACK_ELEMENT.textContent = hero.attack;
-  LEVEL_ELEMENT.textContent = hero.level;
-};
-
-// キャラクター画像を更新
-const updateCharacterImage = (imagePath) => {
-  CHARACTER_IMAGE.src = imagePath;
-};
-
+// ポップアップ表示
 const showGameOverPopup = () => {
-  // 十字キーと選択ボタンを非表示・非活性にする
-  DIRECTION_ELEMENT.style.display = "none";
-  CHOICE_ELEMENT.style.display = "none";
-
-  // ポップアップの作成
   const popup = document.createElement("div");
   popup.id = "game-over-popup";
-  popup.style.position = "fixed";
-  popup.style.top = "50%";
-  popup.style.left = "50%";
-  popup.style.transform = "translate(-50%, -50%)";
-  popup.style.padding = "20px";
-  popup.style.backgroundColor = "#fff";
-  popup.style.border = "2px solid #000";
-  popup.style.zIndex = "1000";
-  popup.style.textAlign = "center";
+  popup.style = `
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #000;
+    z-index: 1000;
+    text-align: center;
+  `;
 
-  // メッセージ
   const message = document.createElement("p");
   message.textContent = "主人公が死にました。\n蘇生しますか？";
   popup.appendChild(message);
 
-  // YESボタン
   const yesButton = document.createElement("button");
   yesButton.textContent = "YES";
-  yesButton.style.marginTop = "10px";
-  yesButton.style.padding = "10px 20px";
-  yesButton.style.fontSize = "16px";
-  yesButton.style.cursor = "pointer";
-
-  // YESボタンのイベント
+  yesButton.style = `
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  `;
   yesButton.addEventListener("click", () => {
-      document.body.removeChild(popup); // ポップアップを削除
-      addLog("戦いは終了しました。\n蘇生しました。"); // ログに戦い終了を記録
-      resetGame(); // ゲームの初期化
-
-      // 十字キーと選択ボタンを再表示・再活性化
-      DIRECTION_ELEMENT.style.display = "flex";
-      CHOICE_ELEMENT.style.display = "none"; // 選択ボタンは非活性
+    document.body.removeChild(popup); // ポップアップを削除
+    resetGame(); // ゲーム初期化
+    addLog("主人公が蘇生しました。");
   });
 
   popup.appendChild(yesButton);
-  document.body.appendChild(popup); // ポップアップを表示
+  document.body.appendChild(popup);
 };
 
-// ゲームを初期化
-const resetGame = () => {
-  hero.hp = hero.maxHp; // 最大HPにリセット
-  hero.attack = 10;
-  hero.level = 1;
-  hero.exp = 0;
-  currentMonster = null;
-
-  updateCharacterImage(hero.image); // キャラクター画像を初期化
-
-  // 十字キーと選択ボタンを初期化
-  DIRECTION_ELEMENT.style.display = "flex";
-  CHOICE_ELEMENT.style.display = "none"; // 選択ボタンを非表示
-  toggleControls(true); // 十字キーを表示
-
-  updateStatus(); // ステータス更新
-};
+// イベントハンドラーの登録
+window.onload = () => resetGame();
+document.getElementById("up").addEventListener("click", () => moveHero("上"));
+document.getElementById("down").addEventListener("click", () => moveHero("下"));
+document.getElementById("left").addEventListener("click", () => moveHero("左"));
+document.getElementById("right").addEventListener("click", () => moveHero("右"));
+document.getElementById("Start-fighting").addEventListener("click", () => attackMonster());
+document.getElementById("run-away").addEventListener("click", () => tryToEscape());
