@@ -1,11 +1,11 @@
 // 必要な要素を取得
-const LOG_CONTENT = document.getElementById("log-content");
-const HP_ELEMENT = document.getElementById("hp");
-const ATTACK_ELEMENT = document.getElementById("attack");
-const LEVEL_ELEMENT = document.getElementById("level");
-const CHARACTER_IMAGE = document.getElementById("character-image");
-const DIRECTION_ELEMENT = document.getElementById("direction");
-const CHOICE_ELEMENT = document.getElementById("choice");
+const logContent = document.getElementById("log-content");
+const hpElement = document.getElementById("hp");
+const attackElement = document.getElementById("attack");
+const levelElement = document.getElementById("level");
+const characterImage = document.getElementById("character-image");
+const directionElement = document.getElementById("direction");
+const choiceElement = document.getElementById("choice");
 
 const LEVEL_UPEXP = 30; // レベルアップする経験値の量
 const LEVEL_UP_ATK = 20; // レベルアップで加算される攻撃力
@@ -54,25 +54,25 @@ const MONSTERS = [
 let currentMonster = null;
 // ステータス更新
 const updateStatus = () => {
-  HP_ELEMENT.textContent = hero.hp;
-  ATTACK_ELEMENT.textContent = hero.attack;
-  LEVEL_ELEMENT.textContent = hero.level;
+  hpElement.textContent = hero.hp;
+  attackElement.textContent = hero.attack;
+  levelElement.textContent = hero.level;
 };
 
 // キャラクター画像を更新
 const updateCharacterImage = (imagePath) => {
-  CHARACTER_IMAGE.src = imagePath;
+  characterImage.src = imagePath;
 };
 
 // コントロール切り替え
 const toggleControls = (isDirectionActive) => {
   if (isDirectionActive === true) {
-    DIRECTION_ELEMENT.style.display = "flex"; // 十字キーを表示
-    CHOICE_ELEMENT.style.display = "none"; // ボタンを非表示
+    directionElement.style.display = "flex"; // 十字キーを表示
+    choiceElement.style.display = "none"; // ボタンを非表示
     updateCharacterImage(hero.image); // 非戦闘中はヒーロー画像を表示
   } else {
-    DIRECTION_ELEMENT.style.display = "none"; // 十字キーを非表示
-    CHOICE_ELEMENT.style.display = "flex"; // ボタンを表示
+    directionElement.style.display = "none"; // 十字キーを非表示
+    choiceElement.style.display = "flex"; // ボタンを表示
   }
 };
 
@@ -80,8 +80,8 @@ const toggleControls = (isDirectionActive) => {
 const addLog = (message) => {
   const logLine = document.createElement("p");
   logLine.textContent = message;
-  LOG_CONTENT.appendChild(logLine);
-  LOG_CONTENT.scrollTop = LOG_CONTENT.scrollHeight;
+  logContent.appendChild(logLine);
+  logContent.scrollTop = logContent.scrollHeight;
 };
 
 // ゲームを初期化
