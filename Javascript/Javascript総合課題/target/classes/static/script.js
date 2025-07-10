@@ -140,7 +140,7 @@ const monsterAttack = (monster) => {
 const startBattle = (monster) => {
   addLog(`${monster.name}と戦闘が始まりました！`);
   updateCharacterImage(monster.image); // 戦闘中はモンスター画像を表示
-  currentMonster(false)
+  toggleControls(false);
 };
 
 // ヒーローの攻撃処理
@@ -163,22 +163,32 @@ const attackMonster = () => {
   }
 };
 
-// エンカウント判定 (40%)
-const encounterMonster = () => {
-  const encounterChance = Math.random();
-  console.log(encounterChance);
-  if (encounterChance < APPEARANCE_RATE) {
-    currentMonster = chooseMonster(); // モンスターを選択
-    updateCharacterImage(currentMonster.image); // モンスター画像を表示
-    addLog(`${currentMonster.name} が現れた！`);
-    toggleControls(false); // モンスターがいるとき
-    startBattle(currentMonster); // 戦闘開始
-  } else {
-    addLog("何も見つかりませんでした。");
-    toggleControls(true); // 非戦闘状態
-    updateCharacterImage(hero.image); // ヒーロー画像を表示
+// エンカウント判定
+async function encounterMonster() {
+  try {
+    const res = await fetch('/api/encounter');
+    const data = await res.json();
+    if (data.appear) {
+      currentMonster = { 
+        name: data.monster.name,
+        hp: data.monster.hp,
+        attack: data.monster.attack,
+        exp: data.monster.exp,
+        image: data.monster.image
+      };
+      addLog(`${currentMonster.name} が現れた！`);
+      updateCharacterImage(currentMonster.image);
+      toggleControls(false);
+      startBattle(currentMonster);
+    } else {
+      addLog("何も見つかりませんでした。");
+      toggleControls(true);
+      updateCharacterImage(hero.image);
+    }
+  } catch (err) {
+    addLog(`出現判定エラー: ${err}`);
   }
-};
+}
 
 // 移動処理
 const moveHero = (direction) => {
@@ -196,7 +206,7 @@ const tryToEscape = () => {
     currentMonster = null; // 現在のモンスターをリセット
   } else {
     addLog("逃げられませんでした！");
-    console.log(currentMonster)
+    console.log(currentMonster);
     monsterAttack(currentMonster); // モンスターが攻撃
   }
 };
